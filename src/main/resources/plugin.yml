@@ -1,0 +1,9 @@
+name: SillyNick
+version: 1.0-DEVBETA
+api-version: 1.17
+author: Sillysockk
+main: me.sillysock.SillyNick
+
+commands:
+  nick:
+    description: piss
