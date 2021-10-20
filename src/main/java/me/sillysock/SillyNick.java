@@ -3,18 +3,21 @@ package me.sillysock;
 import me.sillysock.Commands.NickCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SillyNick extends JavaPlugin {
 
-    private static Logger logger;
-    private static FileConfiguration config;
+    private static Logger logger; // Literally just to log shit
+    private static FileConfiguration config; // Modify the config.yml file
+    private static HashMap<Player, String> nicknamedPlayers = new HashMap<>();
 
     @Override
-    public void onEnable() {
+    public void onEnable() { // When the plugin loads on startup, the below code is executed.
         logger = getLogger();
         config = getConfig();
 
@@ -41,5 +44,13 @@ public class SillyNick extends JavaPlugin {
 
     public static FileConfiguration getConfiguration() {
         return config;
+    }
+
+    public static HashMap<Player, String> getNicknamedPlayers() {
+        return nicknamedPlayers;
+    }
+
+    public static boolean isNicked(final Player user) {
+        return nicknamedPlayers.containsKey(user);
     }
 }
